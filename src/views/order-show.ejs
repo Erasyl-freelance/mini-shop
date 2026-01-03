@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+<h1>🧾 Sipariş #<%= order.id %></h1>
+<p>Toplam: $<%= order.total_price %></p>
+<p>Durum: <%= order.status %></p>
+
+<hr>
+
+<ul>
+  <% items.forEach(item => { %>
+    <li>
+      <%= item.title %> — $<%= item.price %> × <%= item.qty %>
+    </li>
+  <% }) %>
+</ul>
+
+<a href="/orders">⬅ Siparişlere dön</a>
+
+<%- include('partials/footer') %>

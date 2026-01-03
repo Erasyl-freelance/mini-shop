@@ -1,0 +1,54 @@
+<%- include('../layout/header') %>
+
+<h1>Ürünler</h1>
+
+<form method="GET" action="/products" class="search-bar">
+  <input
+    type="text"
+    name="search"
+    value="<%= search || '' %>"
+    placeholder="Ürün ara"
+  >
+  <button type="submit">Ara</button>
+</form>
+
+<div class="sort">
+  <a href="/products?sort=asc">⬆️ Fiyat Artan</a>
+  <a href="/products?sort=desc">⬇️ Fiyat Azalan</a>
+</div>
+
+<% if (success && success.length) { %>
+  <div class="alert success"><%= success[0] %></div>
+<% } %>
+
+<% if (error && error.length) { %>
+  <div class="alert error"><%= error[0] %></div>
+<% } %>
+
+<div class="grid">
+  <% products.forEach(p => { %>
+    <div class="card">
+      <h3><%= p.title %></h3>
+      <p><%= p.description %></p>
+      <strong>$<%= p.price %></strong>
+
+      <div class="actions">
+        <a href="/products/<%= p.id %>">Detay</a>
+        <a href="/products/edit/<%= p.id %>">Düzenle</a>
+        <a href="/products/delete/<%= p.id %>">Sil</a>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<div class="pagination">
+  <% for (let i = 1; i <= totalPages; i++) { %>
+    <% if (i === currentPage) { %>
+      <span class="active"><%= i %></span>
+    <% } else { %>
+      <a href="/products?page=<%= i %>"><%= i %></a>
+    <% } %>
+  <% } %>
+</div>
+
+<%- include('../layout/footer') %>

@@ -1,0 +1,53 @@
+<%- include('partials/header') %>
+
+<h1>🛒 Sepetim</h1>
+
+<% if (cart.length === 0) { %>
+  <p>Sepetiniz boş.</p>
+  <a href="/products">⬅ Alışverişe başla</a>
+<% } else { %>
+
+<table border="1" cellpadding="8" id="cart-table">
+  <tr>
+    <th>Ürün</th>
+    <th>Fiyat</th>
+    <th>Adet</th>
+    <th>Toplam</th>
+    <th>İşlem</th>
+  </tr>
+
+  <% cart.forEach(item => { %>
+    <tr data-id="<%= item.id %>">
+      <td><%= item.title %></td>
+
+      <td>$<%= item.price %></td>
+
+      <td>
+        <button class="btn-minus" data-id="<%= item.id %>">-</button>
+        <span class="qty"><%= item.qty %></span>
+        <button class="btn-plus" data-id="<%= item.id %>">+</button>
+      </td>
+
+      <td>
+        $<span class="row-total"><%= item.price * item.qty %></span>
+      </td>
+
+      <td>
+        <button class="btn-remove" data-id="<%= item.id %>">❌</button>
+      </td>
+    </tr>
+  <% }) %>
+</table>
+
+<h3>Toplam: $<span id="cart-total"><%= toplam %></span></h3>
+<p> </p>
+<form action="/checkout" method="POST">
+  <button type="submit">✅ Siparişi Tamamla</button>
+</form>
+
+<a href="/products">⬅ Alışverişe devam</a>
+
+<% } %>
+
+<script src="/js/cart.js"></script>
+<%- include('partials/footer') %>

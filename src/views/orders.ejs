@@ -1,0 +1,13 @@
+<h2>📦 Siparişler</h2>
+
+<ul>
+  <% orders.forEach(order => { %>
+    <li>
+      <strong>#<%= order.id %></strong><br>
+      Toplam: $<%= order.total_price %><br>
+      Durum: <%= order.status %><br>
+
+      <a href="/orders/<%= order.id %>">Detay</a>
+    </li>
+  <% }) %>
+</ul>

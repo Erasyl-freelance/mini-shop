@@ -1,0 +1,15 @@
+<%- include('../layout/header') %>
+
+<h1>Yeni Ürün</h1>
+
+<form method="POST" action="/products/create" class="form">
+  <input name="title" placeholder="Ürün adı" required>
+  <input name="price" type="number" placeholder="Fiyat" required>
+  <textarea name="description" placeholder="Açıklama"></textarea>
+  <input name="image_url" placeholder="Resim URL">
+  <input name="stock" type="number" placeholder="Stok">
+
+  <button>Kaydet</button>
+</form>
+
+<%- include('../layout/footer') %>

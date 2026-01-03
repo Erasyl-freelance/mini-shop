@@ -1,0 +1,22 @@
+<header class="header">
+  <div class="container">
+    <h1>🛒 Mini Shop</h1>
+
+    <nav>
+      <a href="/products">Ürünler</a>
+
+      <% if (isAdmin) { %>
+        <a href="/products/create">Yeni Ürün</a>
+        <a href="/orders">Siparişler</a>
+      <% } %>
+
+      <% if (user) { %>
+        <a href="/cart">Sepet</a>
+        <a href="/logout">Çıkış</a>
+      <% } else { %>
+        <a href="/auth">Giriş / Kayıt</a>
+      <% } %>
+      
+    </nav>
+  </div>
+</header>

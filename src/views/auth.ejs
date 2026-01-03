@@ -1,0 +1,38 @@
+<%- include("partials/header") %>
+
+<div class="auth-page">
+  <div class="auth-card">
+
+    <% if (mode === "login") { %>
+      <h2>🔐 Giriş Yap</h2>
+
+      <form action="/login" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Şifre" required>
+        <button type="submit">Giriş</button>
+      </form>
+
+      <p>
+        Hesabın yok mu?
+        <a href="/auth?mode=register">Kayıt Ol</a>
+      </p>
+
+    <% } else { %>
+      <h2>📝 Kayıt Ol</h2>
+
+      <form action="/register" method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Şifre" required>
+        <button type="submit">Kayıt Ol</button>
+      </form>
+
+      <p>
+        Zaten hesabın var mı?
+        <a href="/auth?mode=login">Giriş Yap</a>
+      </p>
+    <% } %>
+
+  </div>
+</div>
+
+<%- include("partials/footer") %>
